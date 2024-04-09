@@ -1,10 +1,22 @@
-<mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile>
+<div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+  <div class="grid grid-rows-4 grid-cols-4 gap-4">
+    @defer {
+      <div class="row-span-3">
+        <app-weather [data]="weatherData()" />
+      </div>
+    }
     @defer {
       <app-pollution [data]="pollutionData()" />
     }
-  </mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>3</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
-</mat-grid-list>
+    @defer {
+      <app-pollution [data]="pollutionData()" />
+    }
+    @defer {
+      <app-pollution [data]="pollutionData()" />
+    }
+    @defer {
+      <app-pollution [data]="pollutionData()" />
+    }
+  </div>
+</div>
+

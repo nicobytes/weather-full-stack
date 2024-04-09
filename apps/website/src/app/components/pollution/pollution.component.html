@@ -1,21 +1,28 @@
-<mat-card class="m-4">
-  <mat-card-header>
-    <mat-card-title>
-      <div class="flex items-center space-x-2">
-        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="airwave" />
-        <span>Air Polution</span>
-      </div>
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <div id="chart">
-      <apx-chart
-        [series]="chartOptions().series"
-        [chart]="chartOptions().chart"
-        [plotOptions]="chartOptions().plotOptions"
-        [labels]="chartOptions().labels"
-        [fill]="chartOptions().fill"
-      />
-    </div>
-  </mat-card-content>
-</mat-card>
+<div
+  class="w-full h-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-slate-800 dark:border-gray-50 dark:hover:bg-gray-700">
+  <div class="flex items-center space-x-2">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="airwave"
+      class="text-slate-900 dark:text-slate-400" />
+    <h5 class=" font-light text-xl tracking-tight text-slate-900  dark:text-slate-400">Air pollution</h5>
+  </div>
+  <p class="font-normal text-center text-4xl text-slate-500 dark:text-white">{{ data() }}</p>
+  <p class="font-normal text-center text-slate-500 dark:text-white">
+    @switch (data()) {
+      @case(1) {
+      <span>Air quality is good.</span>
+      }
+      @case(2) {
+      <span>Air quality is moderate.</span>
+      }
+      @case(3) {
+      <span>Air quality is unhealthy for sensitive groups.</span>
+      }
+      @case(4) {
+      <span>Air quality is unhealthy.</span>
+      }
+      @case(5) {
+      <span>Air quality is hazardous.</span>
+      }
+    }
+  </p>
+</div>

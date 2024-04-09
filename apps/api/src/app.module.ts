@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import config from './config';
-import { PollutionModule } from './pollution/pollution.module';
+import { WeatherModule } from './weather/weather.module';
 
 @Module({
   imports: [
@@ -15,7 +15,7 @@ import { PollutionModule } from './pollution/pollution.module';
         OPEN_WEATHER_API_URL: Joi.string().required(),
       }),
     }),
-    PollutionModule,
+    WeatherModule,
   ],
 })
 export class AppModule {}

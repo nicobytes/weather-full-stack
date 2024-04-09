@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
-import { AirPollutionResponse } from '@models/api.interface';
 import { map } from 'rxjs';
+import { WeatherResponse } from '@models/api.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,17 +13,16 @@ export class ApiService {
 
   constructor() { }
 
-  getPollutionData() {
-    const path = `${environment.apiUrl}/pollution?lat=-0.1257&lng=51.5085`;
-    return this.http.get<AirPollutionResponse>(path)
+  getPollutionData(lat: number, lng: number) {
+    const path = `${environment.apiUrl}/pollution?lat=${lat}&lng=${lng}`;
+    return this.http.get<{ aqi: 1 | 2 | 3 | 4 | 5 }>(path)
       .pipe(
-        map((response) => {
-          const data = response.list;
-          if (data.length > 0) {
-            return data[0].main.aqi;
-          }
-          return 0;
-        })
+        map((response) => response.aqi)
       );
+  }
+
+  getWeather(lat: number, lng: number) {
+    const path = `${environment.apiUrl}/weather?lat=${lat}&lng=${lng}`;
+    return this.http.get<WeatherResponse>(path);
   }
 }

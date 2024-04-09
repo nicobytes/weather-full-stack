@@ -1,0 +1,30 @@
+@if (data(); as data) {
+  <div
+    class="w-full h-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-slate-800 dark:border-gray-200 dark:hover:bg-gray-700">
+    <div class="flex items-center space-x-2">
+      <h5 class=" font-light text-xl tracking-tight text-slate-900  dark:text-white">Cochabamba, Bolivia</h5>
+    </div>
+    @if(imgUrl(); as img) {
+      <img priority class="-ml-4" [ngSrc]="img" alt="image" width="100" height="100">
+    }
+
+    <p class="font-normal text-4xl text-slate-500 dark:text-white">{{ data?.main?.temp | number: '1.0-0' }}
+      <span>&#8451;</span></p>
+    <p class="font-normal capitalize text-slate-500 dark:text-white">
+      {{ data?.weather?.description }}
+    </p>
+    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-200">
+    <div class="flex space-y-2 flex-col">
+      <div class="flex items-center space-x-2">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="today"
+          class="text-slate-900 dark:text-white" />
+        <p class=" font-light tracking-tight text-slate-900  dark:text-white">{{ today()| date }}</p>
+      </div>
+      <div class="flex items-center space-x-2">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="schedule"
+          class="text-slate-900 dark:text-white" />
+        <p class=" font-light tracking-tight text-slate-900  dark:text-white">{{ today()| date:'shortTime' }}</p>
+      </div>
+    </div>
+  </div>
+}
