@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -7,6 +8,14 @@ async function bootstrap() {
   app.enableCors({
     origin: '*',
   });
+
+  const config = new DocumentBuilder()
+    .setTitle('Weather API')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('docs', app, document);
+
   await app.listen(process.env.PORT || 3001);
 }
 bootstrap();

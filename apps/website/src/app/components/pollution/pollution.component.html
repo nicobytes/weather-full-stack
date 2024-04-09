@@ -1,0 +1,21 @@
+<mat-card class="m-4">
+  <mat-card-header>
+    <mat-card-title>
+      <div class="flex items-center space-x-2">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="airwave" />
+        <span>Air Polution</span>
+      </div>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div id="chart">
+      <apx-chart
+        [series]="chartOptions().series"
+        [chart]="chartOptions().chart"
+        [plotOptions]="chartOptions().plotOptions"
+        [labels]="chartOptions().labels"
+        [fill]="chartOptions().fill"
+      />
+    </div>
+  </mat-card-content>
+</mat-card>
