@@ -95,7 +95,9 @@ export default class HomeComponent implements OnInit {
   }
 
   async getCurrentPosition() {
-    const coordinates = await Geolocation.getCurrentPosition();
+    const coordinates = await Geolocation.getCurrentPosition({
+      timeout: 5000,
+    });
     this.coords.set({
       lat: coordinates.coords.latitude,
       lng: coordinates.coords.longitude
@@ -131,7 +133,7 @@ export default class HomeComponent implements OnInit {
     this.service.getWeather(lat, lng)
       .subscribe((data) => {
         this.weatherData.set(data);
-        this.document.getElementById('appFavicon')?.setAttribute('href', `http://openweathermap.org/img/wn/${data.weather.icon}@2x.png`);
+        this.document.getElementById('appFavicon')?.setAttribute('href', `https://openweathermap.org/img/wn/${data.weather.icon}@2x.png`);
       });
   }
 
