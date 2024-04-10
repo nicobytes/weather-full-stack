@@ -101,14 +101,14 @@ export class WeatherService {
     return this.http.get(path).pipe(
       map((response) => {
         const data = response.data;
-        const obj = data.reduce((acum, item) => {
+        const result = data.reduce((acum, item) => {
           const key = `${item.lat}${item.lon}`;
           if (!acum[key]) {
             acum[key] = item;
           }
           return acum;
         }, {});
-        return Object.values(obj);
+        return Object.values(result);
       }),
     );
   }
