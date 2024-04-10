@@ -98,6 +98,18 @@ export class WeatherService {
   searchCity(query: string) {
     const { url, key } = this.configService.open_weather;
     const path = `${url}/geo/1.0/direct?q=${query}&appid=${key}&limit=5`;
-    return this.http.get(path).pipe(map((response) => response.data));
+    return this.http.get(path).pipe(
+      map((response) => {
+        const data = response.data;
+        const obj = data.reduce((acum, item) => {
+          const key = `${item.lat}${item.lon}`;
+          if (!acum[key]) {
+            acum[key] = item;
+          }
+          return acum;
+        }, {});
+        return Object.values(obj);
+      }),
+    );
   }
 }

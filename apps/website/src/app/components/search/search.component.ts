@@ -31,7 +31,10 @@ export class SearchComponent implements OnInit {
 
   displayFn(city: City): string {
     if (!city) return '';
-    return `${city.name}`;
+    if (!city.state) {
+      return `${city.name}, ${city.country}`;
+    }
+    return `${city.name}, ${city.state}, ${city.country}`;
   }
 
   chooseCity(event: MatAutocompleteSelectedEvent) {

@@ -1,6 +1,9 @@
-<input type="text" class="rounded-lg h-full" [formControl]="myControl" [matAutocomplete]="auto">
+<input type="text" class="rounded-lg h-full w-full" placeholder="Search by city" [formControl]="myControl"
+  [matAutocomplete]="auto">
 <mat-autocomplete #auto="matAutocomplete" [displayWith]="this.displayFn" (optionSelected)="chooseCity($event)">
   @for (item of options(); track item.name) {
-  <mat-option [value]="item">{{item.name}}, {{item.country}}</mat-option>
+  <mat-option [value]="item">
+    {{item.name}}, @if(item.state) { {{item.state}},  } {{item.country}}
+  </mat-option>
   }
 </mat-autocomplete>

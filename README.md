@@ -1,6 +1,6 @@
 # Weather App Overview
 
-This is a simple weather app that uses the OpenWeatherMap API to display the current weather for a given city. The app is built with React and uses the Material-UI library for styling.
+This is a weather app to display the current weather for a given city. The app is built with Angular and uses the TaildwindCSS library for styling, in the backend side it uses NestJS to fetch the data from the OpenWeatherMap API.
 
 ![capture](/public/capture-240404_blk.png)
 

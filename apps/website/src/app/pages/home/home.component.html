@@ -1,15 +1,20 @@
 <div class="mx-auto max-w-screen-xl flex flex-col space-y-4 p-5 md:h-screen">
-  <div class="flex space-x-2 justify-end">
+  <div class="flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0 md:justify-end">
     @defer () {
-      <app-search (onChooseCity)="onChangeCity($event)" />
+      <div class="w-auto">
+        <app-search (onChooseCity)="onChangeCity($event)" />
+      </div>
     }
-    <app-theme-btn />
-    <button (click)="getCurrentPosition()" type="button"
-      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 rounded-lg text-sm px-4 py-2.5 dark:bg-slate-800 dark:text-white dark:border-slate-600 dark:hover:bg-slate-700 dark:hover:border-slate-600 ">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" class="text-slate-900 dark:text-slate-400">
-        location_on
-      </mat-icon>
-    </button>
+    <div class="flex space-x-2 justify-end">
+      <app-theme-btn />
+      <button (click)="getCurrentPosition()" type="button"
+        class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 rounded-lg text-sm px-4 py-2.5 dark:bg-slate-800 dark:text-white dark:border-slate-600 dark:hover:bg-slate-700 dark:hover:border-slate-600 ">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" class="text-slate-900 dark:text-slate-400">
+          location_on
+        </mat-icon>
+      </button>
+    </div>
+
   </div>
   <div class="flex flex-1">
     <div class="flex flex-col space-y-4 w-full md:grid md:grid-rows-3 md:grid-cols-4 md:gap-4 md:space-y-0">

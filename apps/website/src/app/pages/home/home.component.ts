@@ -35,6 +35,7 @@ export default class HomeComponent implements OnInit {
   private document = inject(DOCUMENT);
 
   coords = signal({ lat: -17.3936114, lng: -66.1568983 });
+  watchID = signal<string | null>(null);
 
   pollution = signal<number>(1);
   weatherData = signal<WeatherResponse | null>(null);
@@ -105,9 +106,9 @@ export default class HomeComponent implements OnInit {
   }
 
   async watchPosition() {
-    await Geolocation.watchPosition({
+    const watchID = await Geolocation.watchPosition({
       enableHighAccuracy: true,
-      timeout: 10000,
+      timeout: 300000,
       maximumAge: 0
     }, (position) => {
       if (position) {
@@ -119,6 +120,7 @@ export default class HomeComponent implements OnInit {
         });
       }
     });
+    this.watchID.set(watchID);
   }
 
   private getData(lat: number, lng: number) {
@@ -139,6 +141,10 @@ export default class HomeComponent implements OnInit {
 
   onChangeCity(data: { lat: number, lng: number }) {
     this.coords.set(data);
+    const watchID = this.watchID();
+    if (watchID) {
+      Geolocation.clearWatch({ id: watchID });
+    }
   }
 
 }
