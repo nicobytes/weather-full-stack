@@ -103,6 +103,7 @@ export default class HomeComponent implements OnInit {
       lat: coordinates.coords.latitude,
       lng: coordinates.coords.longitude
     });
+    this.watchPosition();
   }
 
   async watchPosition() {

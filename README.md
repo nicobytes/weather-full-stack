@@ -2,24 +2,22 @@
 
 This is a weather app to display the current weather for a given city. The app is built with Angular and uses the TaildwindCSS library for styling, in the backend side it uses NestJS to fetch the data from the OpenWeatherMap API.
 
-![capture](/public/capture-240404_blk.png)
+![capture](/images/weather.jpg)
 
 ## 🔍 Overview
 
 - 🧱 [Stack](#-stack)
 - 🚀 [Quickstart](#-quickstart)
-- 🌐 [Deploy](#-deploy)
+- 🌐 [Backend](#-backend)
 
 ## 🧱 Stack
 
-- Website: [Angular](https://nextjs.org/)
-- API: [NestJS](https://sdk.vercel.ai/docs)
-- Native App: [Ionic](https://sdk.vercel.ai/docs)
-- Generative Model: [OpenAI](https://openai.com/)
-- Search API: [Tavily AI](https://tavily.com/)
-- Component library: [Angular](https://ui.shadcn.com/)
-- Headless component primitives: [Angular CDK](https://www.radix-ui.com/)
-- Styling: [Tailwind CSS](https://tailwindcss.com/)
+- Frontend: [Angular](https://nextjs.org/)
+  - Framework: [Angular](https://angular.dev/)
+  - Styling: [Tailwind CSS](https://tailwindcss.com/)
+  - Headless component primitives: [Angular CDK](https://material.angular.io)
+- Backend: 
+  - API: [NestJS](https://sdk.vercel.ai/docs)
 
 ## 🚀 Quickstart
 
@@ -34,36 +32,61 @@ git clone git@github.com:[YOUR_GITHUB_ACCOUNT]/morphic.git
 ### 2. Install dependencies
 
 ```
-cd morphic
-bun i
+cd apps/website
+npm i
+
+cd apps/api
+npm i
 ```
 
-### 3. Fill out secrets
+### 5. Run app locally
 
 ```
-cp .env.local.example .env.local
+cd apps/website
+npm run start
+
+cd apps/api
+npm run start:Dev
 ```
 
-Your .env.local file should look like this:
+## 🚀 Backend
 
-```
-# OpenAI API key retrieved here: https://platform.openai.com/api-keys
-OPENAI_API_KEY=[YOUR_OPENAI_API_KEY]
+The backend is built with NestJS, a progressive Node.js framework for building efficient, reliable, and scalable server-side applications. The backend is responsible for fetching the data from the OpenWeatherMap API.
 
-# Tavily API Key retrieved here: https://app.tavily.com/home
-TAVILY_API_KEY=[YOUR_TAVILY_API_KEY]
-```
+![capture](/images/weather_docs.jpg)
 
-### 4. Run app locally
+In several endpoints, the backend will fetch the data from the OpenWeatherMap API and proccess the data to return the desired information for the frontend app and store the OpenWeatherMap KEY to not expose this key in the frontend. I use heroku to deploy the backend this url:
 
-```
-bun dev
-```
+https://weather-api-nestjs-8447e2d5502a.herokuapp.com/api/v1
 
-You can now visit http://localhost:3000.
+## 🚀 Frontend
 
-## 🌐 Deploy
+The frontend is built with Angular, a platform and framework for building single-page client applications using HTML and TypeScript. The frontend is responsible for displaying the current weather for a given city.
 
-Host your own live version of Morphic with Vercel.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmiurla%2Fmorphic&env=OPENAI_API_KEY,TAVILY_API_KEY)
+### Dark and light mode support
+
+The app supports dark and light mode, the user can switch between the two modes by clicking the toggle button in the top right corner of the app.
+
+![capture](/images/weather_dark.jpg)
+
+### Search for a city
+
+The user can search for a city by typing the city name in the search bar, and autocomplete suggestions help the user select the desired city.
+
+![capture](/images/weather_search.jpg)
+
+### Track the user's location
+
+The app can track the user's location and display the current weather for the user's location each 5 minutes.
+
+### Using Angular Signals
+
+The application uses Angular signals like a reactive pattern to communicate between components, services, and directives.
+
+## 🚀 Deployment
+
+The project has automatic deployment to Heroku for the API, the frontend in Cloudflare pages. This process is done by Github actions, and run lint and build the project before deploying.
+
+![capture](/images/weather_deployment.jpg)
+
