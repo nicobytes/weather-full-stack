@@ -25,6 +25,14 @@ export type AirPollutionResponse = {
   list: AirQualityData[];
 };
 
+export interface City {
+  name: string
+  lat: number
+  lon: number
+  country: string
+  state: string
+}
+
 export interface WeatherResponse {
   coord: Coord;
   weather: Weather;
@@ -39,6 +47,7 @@ export interface WeatherResponse {
   id: number;
   name: string;
   cod: number;
+  city: City;
 }
 
 export interface Weather {
@@ -73,3 +82,27 @@ export interface Sys {
   sunrise: number;
   sunset: number;
 }
+
+
+export interface ForecastItem {
+  main: Main;
+  weather: Weather;
+  dt_txt: string;
+  dt: number;
+}
+
+export type ForecastResponse = Array<{
+  date: string;
+  firstForecast: ForecastItem;
+  forecast: ForecastItem[];
+}>;
+
+
+export interface City {
+  name: string;
+  country: string;
+  lat: number;
+  lon: number;
+}
+
+export type CityResponse = City[];

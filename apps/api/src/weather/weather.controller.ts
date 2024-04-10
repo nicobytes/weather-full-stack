@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { WeatherService } from './weather.service';
 
@@ -29,6 +29,11 @@ export class WeatherController {
 
   @Get('/forecast')
   getForecast(@Query('lat') lat: number, @Query('lng') lng: number) {
-    return this.weatherService.getPollution(lat, lng);
+    return this.weatherService.getForecast(lat, lng);
+  }
+
+  @Get('/city/:query')
+  searchCity(@Param('query') query: string) {
+    return this.weatherService.searchCity(query);
   }
 }

@@ -1,0 +1,11 @@
+<app-card-simple icon="calendar_month" title="Forecast">
+  <div class="grid grid-cols-2 gap-3 md:grid-cols-6">
+    @for (item of data(); track item.date) {
+      <div class="flex items-center flex-col p-0 lg:py-4">
+        <p class="font-normal text-slate-500 dark:text-white lg:text-lg">{{ item.date | date: 'dd, MMM' }}</p>
+        <img [ngSrc]="'http://openweathermap.org/img/wn/' + item.firstForecast.weather.icon + '@2x.png'" [alt]="item.date" width="60" height="60">
+        <p class="font-bold text-sm text-slate-500 dark:text-white lg:text-base">{{ item.firstForecast.main.temp }} &deg;C</p>
+      </div>
+    }
+  </div>
+</app-card-simple>

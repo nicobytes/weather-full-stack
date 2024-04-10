@@ -1,0 +1,17 @@
+<div
+  class="w-full h-full relative bg-gray-200 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-slate-800 dark:border-gray-50 dark:hover:bg-gray-700">
+  <div class="flex flex-col w-full h-full justify-between p-5 md:absolute md:top-0 md:left-0">
+    <div class="flex items-center space-x-2">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        class="text-slate-900 dark:text-slate-400">
+        {{icon()}}
+      </mat-icon>
+      <h5 class="font-light tracking-tight text-slate-900  dark:text-slate-400 md:text-sm lg:text-xl">{{ title() }}</h5>
+    </div>
+    <div class="mt-2">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<app-card-simple icon="wb_twilight" title="Sunset">
+  <p class="font-normal mb-2 text-2xl lg:text-4xl text-slate-500 dark:text-white">{{ sunset() | date:'shortTime' }}</p>
+  <p class="font-normal text-sm text-slate-500 dark:text-white">
+    And the sunrise at {{ sunrise() | date:'shortTime' }}
+  </p>
+</app-card-simple>

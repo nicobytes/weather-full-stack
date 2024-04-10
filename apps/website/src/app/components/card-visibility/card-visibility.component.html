@@ -1,0 +1,14 @@
+<app-card-simple icon="visibility" title="Visibility">
+  <p class="font-normal mb-2 text-2xl lg:text-4xl text-slate-500 dark:text-white">{{ visibility() }} km</p>
+  <p class="font-normal text-sm text-slate-500 dark:text-white">
+    @if(visibility() >= 1000) {
+      It's perfectly clear right now.
+    }
+    @if (visibility() >= 5) {
+      Good visibility.
+    }
+    @if (visibility() > 1010) {
+      Poor visibility. Exercise caution while driving or moving around.
+    }
+  </p>
+</app-card-simple>

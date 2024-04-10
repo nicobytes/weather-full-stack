@@ -1,0 +1,14 @@
+<app-card-simple icon="compare_arrows" title="Pressure">
+  <p class="font-normal mb-2 text-2xl lg:text-4xl text-slate-500 dark:text-white">{{ pressure() }} hPa</p>
+  <p class="font-normal text-sm text-slate-500 dark:text-white">
+    @if(pressure() < 1000) {
+      Low pressure. Expect changes in the weather.
+    }
+    @if (pressure() >= 1000 && pressure() <= 1010) {
+      Normal pressure. Typical weather conditions.
+    }
+    @if (pressure() > 1010) {
+      High pressure. Expect stable and clear weather.
+    }
+  </p>
+</app-card-simple>

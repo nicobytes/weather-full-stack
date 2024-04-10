@@ -1,0 +1,13 @@
+<button (click)="toogleTheme()" type="button"
+  class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 rounded-lg text-sm px-4 py-2.5 dark:bg-slate-800 dark:text-white dark:border-slate-600 dark:hover:bg-slate-700 dark:hover:border-slate-600 ">
+  <mat-icon
+      aria-hidden="false"
+      aria-label="Example home icon"
+      class="text-slate-900 dark:text-slate-400">
+      @if (darkMode()) {
+        dark_mode
+      } @else {
+        light_mode
+      }
+    </mat-icon>
+</button>

@@ -1,22 +1,46 @@
-<div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-  <div class="grid grid-rows-4 grid-cols-4 gap-4">
-    @defer {
+<div class="mx-auto max-w-screen-xl flex flex-col space-y-4 p-5 md:h-screen">
+  <div class="flex space-x-2 justify-end">
+    <app-search (onChooseCity)="onChangeCity($event)" />
+    <app-theme-btn />
+    <button (click)="getCurrentPosition()" type="button"
+      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 rounded-lg text-sm px-4 py-2.5 dark:bg-slate-800 dark:text-white dark:border-slate-600 dark:hover:bg-slate-700 dark:hover:border-slate-600 ">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" class="text-slate-900 dark:text-slate-400">
+        location_on
+      </mat-icon>
+    </button>
+  </div>
+  <div class="flex flex-1">
+    <div class="flex flex-col space-y-4 w-full md:grid md:grid-rows-3 md:grid-cols-4 md:gap-4 md:space-y-0">
+      @defer {
       <div class="row-span-3">
         <app-weather [data]="weatherData()" />
       </div>
-    }
-    @defer {
-      <app-pollution [data]="pollutionData()" />
-    }
-    @defer {
-      <app-pollution [data]="pollutionData()" />
-    }
-    @defer {
-      <app-pollution [data]="pollutionData()" />
-    }
-    @defer {
-      <app-pollution [data]="pollutionData()" />
-    }
+      }
+      @defer {
+      <app-pollution [data]="pollution()" />
+      }
+      @defer {
+      <app-card-wind-speed [data]="windSpeed()" />
+      }
+      @defer {
+      <app-card-sys [sunset]="sunset()" [sunrise]="sunrise()" />
+      }
+      @defer {
+      <app-card-pressure [pressure]="pressure()" />
+      }
+      @defer {
+      <app-card-visibility [visibility]="visibility()" />
+      }
+      @defer {
+      <app-card-humidity [humidity]="humidity()" />
+      }
+      @defer {
+      <div class="col-span-3">
+        <app-card-forecast [data]="forecastData()" />
+      </div>
+      }
+    </div>
   </div>
-</div>
 
+
+</div>

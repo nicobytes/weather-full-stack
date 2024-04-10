@@ -6,7 +6,7 @@ import {
   AirPollutionResponse,
   WeatherResponse,
 } from '@src/models/api.interface';
-import { map } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 
 @Injectable()
 export class WeatherService {
@@ -44,6 +44,60 @@ export class WeatherService {
           weather,
         };
       }),
+      switchMap((data) => {
+        return this.getCity(lat, lng).pipe(map((city) => ({ ...data, city })));
+      }),
     );
+  }
+
+  getCity(lat: number, lng: number) {
+    const { url, key } = this.configService.open_weather;
+    const path = `${url}/geo/1.0/reverse?lat=${lat}&lon=${lng}&appid=${key}&limit=1`;
+    return this.http.get(path).pipe(
+      map((response) => {
+        const data = response.data;
+        if (data.length === 0) {
+          return null;
+        }
+        return data[0];
+      }),
+    );
+  }
+
+  getForecast(lat: number, lng: number) {
+    const { url, key } = this.configService.open_weather;
+    const path = `${url}/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${key}&units=metric`;
+    return this.http.get(path).pipe(
+      map((response) => {
+        const data = response.data;
+        if (data.list === 0) {
+          return [];
+        }
+        const group = data.list
+          .map((item) => ({
+            ...item,
+            weather: item.weather.length === 0 ? null : item.weather[0],
+          }))
+          .reduce((acum, item) => {
+            const date = new Date(item.dt_txt).toDateString();
+            if (!acum[date]) {
+              acum[date] = [];
+            }
+            acum[date].push(item);
+            return acum;
+          }, {});
+        return Object.keys(group).map((key) => ({
+          date: key,
+          firstForecast: group[key].length === 0 ? null : group[key][0],
+          forecast: group[key],
+        }));
+      }),
+    );
+  }
+
+  searchCity(query: string) {
+    const { url, key } = this.configService.open_weather;
+    const path = `${url}/geo/1.0/direct?q=${query}&appid=${key}&limit=5`;
+    return this.http.get(path).pipe(map((response) => response.data));
   }
 }

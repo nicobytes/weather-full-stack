@@ -20,6 +20,9 @@ jobs:
       - name: Install Dependencies
         working-directory: ./apps/website
         run: npm ci
+      - name: Linter
+        working-directory: ./apps/website
+        run: npm run lint
       - name: Build
         working-directory: ./apps/website
         run: npm run build
