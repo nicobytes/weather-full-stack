@@ -6,17 +6,20 @@ This is a weather app to display the current weather for a given city. The app i
 
 ## 🚀 Services
 
+![capture](/images/services.png)
+
 - Backend: https://weather-api-nestjs-8447e2d5502a.herokuapp.com/docs
 - Frontend: https://weather.nicobytes.com/
+- Weather API: https://openweathermap.org/
 
 ## 🧱 Stack
 
-- Frontend: [Angular](https://nextjs.org/)
+- Frontend
   - Framework: [Angular](https://angular.dev/)
   - Styling: [Tailwind CSS](https://tailwindcss.com/)
   - Headless component primitives: [Angular CDK](https://material.angular.io)
 - Backend: 
-  - API: [NestJS](https://sdk.vercel.ai/docs)
+  - API: [NestJS](https://nestjs.com/)
 
 ## 🚀 Quickstart
 
@@ -25,7 +28,7 @@ This is a weather app to display the current weather for a given city. The app i
 Fork the repo to your Github account, then run the following command to clone the repo:
 
 ```
-git clone git@github.com:[YOUR_GITHUB_ACCOUNT]/morphic.git
+git clone git@github.com/nicobytes/weather-full-stack
 ```
 
 ### 2. Install dependencies
@@ -54,13 +57,11 @@ The backend is built with NestJS, a progressive Node.js framework for building e
 
 ![capture](/images/weather_docs.jpg)
 
-In several endpoints, the backend will fetch the data from the OpenWeatherMap API and proccess the data to return the desired information for the frontend app and store the OpenWeatherMap KEY to not expose this key in the frontend. I use heroku to deploy the backend this url:
-
-https://weather-api-nestjs-8447e2d5502a.herokuapp.com/api/v1
+In several endpoints, the backend will fetch the data from the OpenWeatherMap API and proccess the data to return the desired information for the frontend app and store the OpenWeatherMap KEY to not expose this key in the frontend.
 
 ## 🚀 Frontend
 
-The frontend is built with Angular, a platform and framework for building single-page client applications using HTML and TypeScript. The frontend is responsible for displaying the current weather for a given city.
+The frontend is built with Angular, a platform and framework for building web applications using HTML, CSS and TypeScript. The frontend is responsible for displaying the current weather for a given city.
 
 
 ### Dark and light mode support
@@ -89,6 +90,3 @@ The project has automatic deployment to Heroku for the API, the frontend in Clou
 
 ![capture](/images/weather_deployment.jpg)
 
-
-Backend: https://weather-api-nestjs-8447e2d5502a.herokuapp.com/api/v1
-Frontend: https://weather.nicobytes.com/
