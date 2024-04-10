@@ -1,14 +1,13 @@
+![capture](/images/weather.jpg)
+
 # Weather App Overview
 
 This is a weather app to display the current weather for a given city. The app is built with Angular and uses the TaildwindCSS library for styling, in the backend side it uses NestJS to fetch the data from the OpenWeatherMap API.
 
-![capture](/images/weather.jpg)
+## 🚀 Services
 
-## 🔍 Overview
-
-- 🧱 [Stack](#-stack)
-- 🚀 [Quickstart](#-quickstart)
-- 🌐 [Backend](#-backend)
+- Backend: https://weather-api-nestjs-8447e2d5502a.herokuapp.com/docs
+- Frontend: https://weather.nicobytes.com/
 
 ## 🧱 Stack
 
@@ -90,3 +89,6 @@ The project has automatic deployment to Heroku for the API, the frontend in Clou
 
 ![capture](/images/weather_deployment.jpg)
 
+
+Backend: https://weather-api-nestjs-8447e2d5502a.herokuapp.com/api/v1
+Frontend: https://weather.nicobytes.com/
