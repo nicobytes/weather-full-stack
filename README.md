@@ -41,14 +41,16 @@ cd apps/api
 npm i
 ```
 
-### 5. Run app locally
+### 3. Run app locally
 
 ```
 cd apps/website
-npm run start
+npm run start:dev
+# check the app in http://localhost:4200
 
 cd apps/api
-npm run start:Dev
+npm run start:dev
+# check the app in http://localhost:3100/docs
 ```
 
 ## 🚀 Backend
