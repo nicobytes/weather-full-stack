@@ -28,7 +28,7 @@ export interface Tile {
   imports: [MatIconModule, PollutionComponent, SearchComponent,WeatherComponent, CardWindSpeedComponent, CardSysComponent, CardPressureComponent, CardVisibilityComponent, CardHumidityComponent, CardForecastComponent, ThemeBtnComponent],
   templateUrl: './home.component.html'
 })
-export class HomeComponent implements OnInit {
+export default class HomeComponent implements OnInit {
 
   private service = inject(ApiService);
   private injector = inject(Injector);

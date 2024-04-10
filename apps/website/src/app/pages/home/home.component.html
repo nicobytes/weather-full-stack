@@ -1,6 +1,8 @@
 <div class="mx-auto max-w-screen-xl flex flex-col space-y-4 p-5 md:h-screen">
   <div class="flex space-x-2 justify-end">
-    <app-search (onChooseCity)="onChangeCity($event)" />
+    @defer () {
+      <app-search (onChooseCity)="onChangeCity($event)" />
+    }
     <app-theme-btn />
     <button (click)="getCurrentPosition()" type="button"
       class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 rounded-lg text-sm px-4 py-2.5 dark:bg-slate-800 dark:text-white dark:border-slate-600 dark:hover:bg-slate-700 dark:hover:border-slate-600 ">
