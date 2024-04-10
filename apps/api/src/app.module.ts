@@ -7,7 +7,7 @@ import { WeatherModule } from './weather/weather.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['.env', '.env.local'],
+      envFilePath: ['.env'],
       load: [config],
       isGlobal: true,
       validationSchema: Joi.object({
