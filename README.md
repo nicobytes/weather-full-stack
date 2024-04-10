@@ -61,6 +61,23 @@ The backend is built with NestJS, a progressive Node.js framework for building e
 
 In several endpoints, the backend will fetch the data from the OpenWeatherMap API and proccess the data to return the desired information for the frontend app and store the OpenWeatherMap KEY to not expose this key in the frontend.
 
+### Folder structure
+
+The backend app is organized in the following folder structure:
+
+```sh
+.
+├── app.module.ts
+├── config.ts
+├── main.ts
+├── models
+│   └── api.interface.ts
+└── weather
+    ├── weather.controller.ts
+    ├── weather.module.ts
+    └── weather.service.ts
+```
+
 ## 🚀 Frontend
 
 The frontend is built with Angular, a platform and framework for building web applications using HTML, CSS and TypeScript. The frontend is responsible for displaying the current weather for a given city.
@@ -86,9 +103,51 @@ The app can track the user's location and display the current weather for the us
 
 The application uses Angular signals like a reactive pattern to communicate between components, services, and directives.
 
+### Folder structure
+
+The frontend app is organized in the following folder structure:
+
+```sh
+.
+├── _routes.json
+├── app
+│   ├── app.component.ts
+│   ├── app.config.server.ts
+│   ├── app.config.ts
+│   ├── app.routes.ts
+│   ├── components
+│   │   ├── card-forecast
+│   │   ├── card-humidity
+│   │   ├── card-pressure
+│   │   ├── card-simple
+│   │   ├── card-sys
+│   │   ├── card-visibility
+│   │   ├── card-wind-speed
+│   │   ├── pollution
+│   │   ├── search
+│   │   ├── theme-btn
+│   │   └── weather
+│   ├── models
+│   │   └── api.interface.ts
+│   ├── pages
+│   │   └── home
+│   └── services
+│       ├── api.service.ts
+│       └── ui.service.ts
+├── assets
+├── environments
+│   ├── environment.development.ts
+│   └── environment.ts
+├── favicon.ico
+├── index.html
+├── main.server.ts
+├── main.ts
+└── styles.css
+```
+
 ## 🚀 Deployment
 
-The project has automatic deployment to Heroku for the API, the frontend in Cloudflare pages. This process is done by Github actions, and run lint and build the project before deploying.
+This project was structured as a monorepo, with the frontend and backend in the same repository, and with Github actions to detect changes in the code and deploy the app to the cloud. As part of CI/CD, the project has a linter and build step before deploying the app. The project has automatic deployment to Heroku for the API, the frontend in Cloudflare pages.
 
 ![capture](/images/weather_deployment.jpg)
 
